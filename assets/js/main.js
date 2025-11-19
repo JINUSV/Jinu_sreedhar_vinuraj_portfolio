@@ -184,3 +184,32 @@
   });
 
 })();
+document.getElementById("contact-form").addEventListener("submit", function (event) {
+    event.preventDefault(); // prevent auto refresh for validation
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let subject = document.getElementById("subject").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    // NAME validation
+    if (name === "" || !/^[A-Za-z\s]+$/.test(name)) {
+        alert("Please enter a valid name (letters only).");
+        return;
+    }
+
+    // EMAIL validation
+    if (email === "" || !email.includes("@") || !email.includes(".")) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    // SUBJECT validation
+    if (subject.length < 3) {
+        alert("Subject must be at least 3 characters.");
+        return;
+    }
+
+    event.target.submit();
+});
+
